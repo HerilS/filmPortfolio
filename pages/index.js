@@ -1,65 +1,83 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+import Layout from "../components/layout";
+import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
+import { IconButton } from "@material-ui/core";
 
-export default function Home() {
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    root: {},
+    aboveFold: {
+      display: "grid",
+      gridTemplateColumns: "1.25fr 1fr",
+      height: "100vh",
+      background: "#ECECEC",
+      position: "relative",
+    },
+    header: {
+      fontFamily: "DM Serif Display, sans-serif",
+      fontSize: "6rem",
+      maxWidth: "50rem",
+      lineHeight: "6.5rem",
+    },
+    paragraph: {
+      fontFamily: "Gilroy, sans-serif",
+      fontSize: "1.2rem",
+      maxWidth: "40rem",
+    },
+    aboveFoldTextBox: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
+    },
+    aboveFoldIcon: {
+      fontSize: "3.2rem",
+      color: "black",
+    },
+    aboveFoldButton: {
+      marginTop: "-1rem",
+      marginLeft: "-1rem",
+    },
+    forestContainer: {
+      backgroundImage: "url('/forest.jpg')",
+      width: "100%",
+      height: "100%",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    },
+    aboveFoldTextBoxInner: {
+      marginRight: '7.5rem',
+    }
+  })
+);
+export default function index() {
+  const classes = useStyles();
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <Layout>
+      <div className={classes.root}>
+        <div className={classes.aboveFold}>
+          <div className={classes.aboveFoldTextBox}>
+            <div className={classes.aboveFoldTextBoxInner}>
+              <div className={classes.header}>
+                Creating films and Marketing Them.
+              </div>
+              <p className={classes.paragraph}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                tincidunt lacus sit amet faucibus rutrum. Cras venenatis turpis
+                leo, vitae finibus lectus malesuada vitae.
+              </p>
+              <div>
+                <IconButton className={classes.aboveFoldButton}>
+                  <PlayCircleOutlineIcon className={classes.aboveFoldIcon} />
+                </IconButton>
+              </div>
+            </div>
+          </div>
+          <div className={classes.forestContainer}>
+          </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+        <div className={classes.belowFold}></div>
+      </div>
+    </Layout>
+  );
 }
